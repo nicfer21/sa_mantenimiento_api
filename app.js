@@ -41,18 +41,19 @@ app.use((req, res, next) => {
     const token = authHeader.split(" ")[0];
     jwt.verify(token, "mantenimiento", (err, decoded) => {
       if (err) {
-        return res.status(403).json({ message: "Token inválido", type: 1 });
+        return res.json({ message: "Token inválido", type: false });
       }
       next();
     });
   } else {
-    res.status(401).json({ message: "Se requiere iniciar sesion", type: 2 });
+    res.json({ message: "Se requiere iniciar sesion", type: false });
   }
 });
 
 app.get("/prueba/", (req, res) => [
   res.json({
-    messege: true,
+    messege: "Token valido",
+    type: true,
   }),
 ]);
 

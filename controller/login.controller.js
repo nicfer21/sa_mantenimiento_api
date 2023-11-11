@@ -68,6 +68,6 @@ const getToken = (
     updatedAt,
   };
   const secret = "mantenimiento";
-  const options = { expiresIn: "168h" }; // '30m' '1h' '24h'
+  const options = { expiresIn: "1000h" }; // '30m' '1h' '24h' --- '168h' = 1semana
   return jwt.sign(payload, secret, options);
 };
