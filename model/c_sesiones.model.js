@@ -2,7 +2,7 @@ import db from "../database/conexion.js";
 import { DataTypes } from "sequelize";
 
 const C_Sesiones = db.define(
-  "cliente_sesiones",
+  "sesiones",
   {
     id_sesiones: {
       type: DataTypes.INTEGER,
@@ -19,8 +19,9 @@ const C_Sesiones = db.define(
     },
   },
   {
-    tableName: "cliente_sesiones",
+    tableName: "sesiones",
     timestamps: true,
+    schema: "worker",
   }
 );
 

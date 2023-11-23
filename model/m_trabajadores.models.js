@@ -2,7 +2,7 @@ import db from "../database/conexion.js";
 import { DataTypes } from "sequelize";
 
 const M_Trabajadores = db.define(
-  "mantenimiento_trabajadores",
+  "trabajadores",
   {
     id_trabajadores: {
       type: DataTypes.INTEGER,
@@ -28,8 +28,9 @@ const M_Trabajadores = db.define(
     },
   },
   {
-    tableName: "mantenimiento_trabajadores",
+    tableName: "trabajadores",
     timestamps: true,
+    schema: "worker",
   }
 );
 
