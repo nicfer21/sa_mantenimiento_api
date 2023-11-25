@@ -2,7 +2,9 @@ import Sistemas from "../model/equipment_sistemas.model.js";
 
 export const getAll = async (req, res) => {
   try {
-    const rs = await Sistemas.findAll();
+    const rs = await Sistemas.findAll({
+      order: [["id_sistemas", "ASC"]],
+    });
     res.json(rs);
   } catch (error) {
     res.json({
