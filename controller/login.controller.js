@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import db from "../database/conexion.js";
-import C_Sesiones from "../model/c_sesiones.model.js";
+import C_Sesiones from "../model/worker_sesiones.model.js";
 
 export const initLogin = async (req, res) => {
   try {

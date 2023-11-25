@@ -5,22 +5,25 @@ import {
   deleteOne,
   getAll,
   getOne,
-  getTrabajadoresAndUsuarios,
   updateOne,
-} from "../controller/m_trabajadores.controller.js";
-
+  createWorker,
+  updateWorker,
+  getAllWorker,
+} from "../controller/worker_usuarios.controller.js";
 
 const router = express.Router();
 
 router.get("/", getAll);
-router.get("/all/", getTrabajadoresAndUsuarios);
-
+router.get("/worker/:id", getAllWorker);
 router.get("/:id", getOne);
 
 router.post("/", createOne);
+router.post("/worker/", createWorker);
 
+router.put("/worker/", updateWorker);
 router.put("/:id", updateOne);
 
 router.delete("/:id", deleteOne);
 
 export default router;
+

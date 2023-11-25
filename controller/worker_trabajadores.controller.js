@@ -1,5 +1,5 @@
 import db from "../database/conexion.js";
-import M_Trabajadores from "../model/m_trabajadores.models.js";
+import M_Trabajadores from "../model/worker_trabajadores.models.js";
 
 export const getAll = async (req, res) => {
   try {
@@ -14,7 +14,9 @@ export const getAll = async (req, res) => {
 
 export const getTrabajadoresAndUsuarios = async (req, res) => {
   try {
-    const rs = await db.query('select id_trabajadores,dni,nombre,cargo,correo,nivel,"createdAt" from view_client_sesion vcs;');
+    const rs = await db.query(
+      'select id_trabajadores,dni,nombre,cargo,correo,nivel,"createdAt" from view_client_sesion vcs;'
+    );
     res.json(rs[0]);
   } catch (error) {
     res.json({

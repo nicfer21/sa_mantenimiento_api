@@ -11,9 +11,14 @@ import { PORT } from "./src/config.js";
 
 import LoginRoutes from "./routes/login.routes.js";
 
-import M_TrabajadoresRoutes from "./routes/m_trabajadores.routes.js";
-import C_UsuariosRoutes from "./routes/c_usuarios.routes.js";
-import C_SesionesRoutes from "./routes/c_sesiones.routes.js";
+import M_TrabajadoresRoutes from "./routes/worker_trabajadores.routes.js";
+import C_UsuariosRoutes from "./routes/worker_usuarios.routes.js";
+import C_SesionesRoutes from "./routes/worker_sesiones.routes.js";
+import MaintenanceUbicaciones from "./routes/maintenance_ubicaciones.routes.js";
+import EquipmentSistemas from "./routes/equipment_sistemas.routes.js";
+import EquipmentUnidades from "./routes/equipment_unidades.routes.js";
+import EquipmentPartes from "./routes/equipment_partes.routes.js";
+import EquipmentSubpartes from "./routes/equipment_subpartes.routes.js";
 
 const app = express();
 const port = PORT;
@@ -60,6 +65,12 @@ app.get("/prueba/", (req, res) => [
 app.use("/m_trabajadores/", M_TrabajadoresRoutes);
 app.use("/c_usuarios/", C_UsuariosRoutes);
 app.use("/c_sesiones/", C_SesionesRoutes);
+
+app.use("/m_ubicaciones/", MaintenanceUbicaciones);
+app.use("/e_sistemas/", EquipmentSistemas);
+app.use("/e_unidades/", EquipmentUnidades);
+app.use("/e_partes/", EquipmentPartes);
+app.use("/e_subpartes/", EquipmentSubpartes);
 
 // para acceder a las imagenes
 app.use("/img/", express.static(join(CURRENT_DIR, "./uploads")));

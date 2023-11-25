@@ -6,7 +6,7 @@ import {
   getAll,
   getOne,
   updateOne,
-} from "../controller/c_sesiones.controller.js";
+} from "../controller/worker_sesiones.controller.js";
 
 const router = express.Router();
 

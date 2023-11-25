@@ -1,6 +1,6 @@
 import db from "../database/conexion.js";
-import C_Usuarios from "../model/c_usuarios.model.js";
-import M_Trabajadores from "../model/m_trabajadores.models.js";
+import C_Usuarios from "../model/worker_usuarios.model.js";
+import M_Trabajadores from "../model/worker_trabajadores.models.js";
 
 export const getAll = async (req, res) => {
   try {
@@ -93,7 +93,7 @@ export const getAllWorker = async (req, res) => {
   }
 };
 
-export const createWorker = async (req, res) => {
+export const createWorker = async (req, res) => {ex
   try {
     const { dni, nombre, cargo, info, acceso, correo, nivel } = req.body;
 

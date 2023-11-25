@@ -1,4 +1,4 @@
-import C_Sesiones from "../model/c_sesiones.model.js";
+import C_Sesiones from "../model/worker_sesiones.model.js";
 
 export const getAll = async (req, res) => {
   try {
