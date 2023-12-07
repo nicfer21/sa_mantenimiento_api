@@ -12,3 +12,18 @@ export const getAll = async (req, res) => {
     });
   }
 };
+
+export const getOne = async (req, res) => {
+  try {
+    const rs = await Sistemas.findOne({
+      where: {
+        id_sistemas: req.params.id,
+      },
+    });
+    res.json(rs);
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
