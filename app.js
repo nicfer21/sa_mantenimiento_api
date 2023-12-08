@@ -22,6 +22,7 @@ import EquipmentSubpartes from "./routes/equipment_subpartes.routes.js";
 
 import MaintenanceUbicaciones from "./routes/maintenance_ubicaciones.routes.js";
 import Maintenance_Solicitudes from "./routes/maintenance_solicitudes.routes.js";
+import Maintenance_Actividades from "./routes/maintenance_actividades.routes.js";
 
 const app = express();
 const port = PORT;
@@ -76,6 +77,7 @@ app.use("/e_subpartes/", EquipmentSubpartes);
 
 app.use("/m_ubicaciones/", MaintenanceUbicaciones);
 app.use("/m_solicitudes/", Maintenance_Solicitudes);
+app.use("/m_actividades/", Maintenance_Actividades);
 
 // para acceder a las imagenes
 app.use("/img/", express.static(join(CURRENT_DIR, "./uploads")));

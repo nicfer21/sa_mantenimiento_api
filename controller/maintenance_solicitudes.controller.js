@@ -27,6 +27,23 @@ export const getAllList = async (req, res) => {
   }
 };
 
+export const getOne = async (req, res) => {
+  try {
+    const rs = await db.query(
+      "SELECT mso.id_ordenes,wt.cargo,wt.nombre,vsu.unidades_nombre,vsu.codigo_c,vsu.sistemas_nombre, vsu.ubicacion_nombre,ms.* from maintenance.solicitudes ms inner join worker.trabajadores wt on ms.id_trabajadores = wt.id_trabajadores INNER JOIN view_sis_unid_ubic vsu on vsu.id_unidades = ms.id_unidades LEFT join maintenance.sol_ord mso on mso.id_solicitudes = ms.id_solicitudes where ms.id_solicitudes = ?;",
+      {
+        type: QueryTypes.SELECT,
+        replacements: [req.params.id],
+      }
+    );
+    res.json(rs[0]);
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
+
 export const createOne = async (req, res) => {
   try {
     const data = {

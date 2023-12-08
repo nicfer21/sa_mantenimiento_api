@@ -28,3 +28,19 @@ export const getAllUniPart = async (req, res) => {
     });
   }
 };
+
+export const getAllCombobox = async (req, res) => {
+  try {
+    const rs = await db.query(
+      "SELECT vsup.id_partes as value, concat(vsup.unidades_nombre,' - ',vsup.unidades_codigo_s, ' - ', vsup.partes_nombre  ,' - ',vsup.codigo_c) as label from view_sis_unid_part vsup order BY vsup.id_partes;",
+      {
+        type: QueryTypes.SELECT,
+      }
+    );
+    res.json(rs);
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
