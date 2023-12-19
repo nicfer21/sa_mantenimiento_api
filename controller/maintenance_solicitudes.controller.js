@@ -27,6 +27,20 @@ export const getAllList = async (req, res) => {
   }
 };
 
+export const getAllCombobox = async (req, res) => {
+  try {
+    const rs = await db.query(
+      "SELECT  ms.id_solicitudes as value,concat(vsu.codigo_c,' > ',vsu.unidades_nombre,' - ',ms.asunto, ' - ',ms.fecha at time zone 'America/Lima') as label from maintenance.solicitudes ms left JOIN maintenance.sol_ord so on ms.id_solicitudes = so.id_solicitudes inner join view_sis_unid vsu on vsu.id_unidades = ms.id_unidades where so.id_sol_ord is NULL order by ms.fecha DESC;"
+    );
+
+    res.json(rs[0]);
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
+
 export const getOne = async (req, res) => {
   try {
     const rs = await db.query(

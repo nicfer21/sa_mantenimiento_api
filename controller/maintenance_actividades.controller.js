@@ -29,6 +29,22 @@ export const getAllList = async (req, res) => {
   }
 };
 
+export const getCombobox = async (req, res) => {
+  try {
+    const rs = await db.query(
+      "SELECT ma.id_actividades as value , concat(vsup.codigo_c,' - ', vsup.partes_nombre,' - ', ma.titulo) as label from maintenance.actividades ma inner join view_sis_unid_part vsup on ma.id_partes = vsup.id_partes;",
+      {
+        type: QueryTypes.SELECT,
+      }
+    );
+    res.json(rs);
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
+
 export const getOne = async (req, res) => {
   try {
     const rs = await db.query(

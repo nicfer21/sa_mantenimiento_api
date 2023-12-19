@@ -23,6 +23,10 @@ import EquipmentSubpartes from "./routes/equipment_subpartes.routes.js";
 import MaintenanceUbicaciones from "./routes/maintenance_ubicaciones.routes.js";
 import Maintenance_Solicitudes from "./routes/maintenance_solicitudes.routes.js";
 import Maintenance_Actividades from "./routes/maintenance_actividades.routes.js";
+import Maintenance_Ordenes from "./routes/maintenance_ordenes.routes.js";
+import Maintenance_Act_Ord from "./routes/maintenance_act_ord.routes.js";
+import Maintenance_Sol_Ord from "./routes/maintenance_sol_ord.routes.js";
+import Maintenance_Reportes from "./routes/maintenance_reportes.routes.js";
 
 const app = express();
 const port = PORT;
@@ -78,6 +82,10 @@ app.use("/e_subpartes/", EquipmentSubpartes);
 app.use("/m_ubicaciones/", MaintenanceUbicaciones);
 app.use("/m_solicitudes/", Maintenance_Solicitudes);
 app.use("/m_actividades/", Maintenance_Actividades);
+app.use("/m_ordenes/", Maintenance_Ordenes);
+app.use("/m_act_ord/", Maintenance_Act_Ord);
+app.use("/m_sol_ord/", Maintenance_Sol_Ord);
+app.use("/m_reportes/", Maintenance_Reportes);
 
 // para acceder a las imagenes
 app.use("/img/", express.static(join(CURRENT_DIR, "./uploads")));

@@ -4,6 +4,7 @@ import {
   createOne,
   deleteOne,
   getAll,
+  getAllCombobox,
   getOne,
   getTrabajadoresAndUsuarios,
   updateOne,
@@ -13,6 +14,7 @@ const router = express.Router();
 
 router.get("/", getAll);
 router.get("/all/", getTrabajadoresAndUsuarios);
+router.get("/combobox/", getAllCombobox);
 
 router.get("/:id", getOne);
 
