@@ -1,9 +1,18 @@
 import express from "express";
 
-import { getAll } from "../controller/maintenance_ordenes.controller.js";
+import {
+  createOne,
+  getAll,
+  getAllList,
+  getOne,
+} from "../controller/maintenance_ordenes.controller.js";
 
 const router = express.Router();
 
 router.get("/", getAll);
+router.get("/list/", getAllList);
+router.get("/:id", getOne);
+
+router.post("/", createOne);
 
 export default router;
