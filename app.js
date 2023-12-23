@@ -28,6 +28,8 @@ import Maintenance_Act_Ord from "./routes/maintenance_act_ord.routes.js";
 import Maintenance_Sol_Ord from "./routes/maintenance_sol_ord.routes.js";
 import Maintenance_Reportes from "./routes/maintenance_reportes.routes.js";
 
+import Calendario from "./routes/calendario.routes.js";
+
 const app = express();
 const port = PORT;
 const CURRENT_DIR = dirname(fileURLToPath(import.meta.url));
@@ -86,6 +88,8 @@ app.use("/m_ordenes/", Maintenance_Ordenes);
 app.use("/m_act_ord/", Maintenance_Act_Ord);
 app.use("/m_sol_ord/", Maintenance_Sol_Ord);
 app.use("/m_reportes/", Maintenance_Reportes);
+
+app.use("/calendario/", Calendario);
 
 // para acceder a las imagenes
 app.use("/img/", express.static(join(CURRENT_DIR, "./uploads")));

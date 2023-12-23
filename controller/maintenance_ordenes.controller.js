@@ -28,6 +28,38 @@ export const getAllList = async (req, res) => {
   }
 };
 
+export const getAllCombobox = async (req, res) => {
+  try {
+    const rs = await db.query(
+      "SELECT mo.id_ordenes as value,concat('Orden de Mantenimiento nro ',mo.id_ordenes,' - ',mo.inicio_ordenes at time zone'America/Lima') as label from maintenance.ordenes mo inner join worker.trabajadores wt on mo.id_trabajadores = wt.id_trabajadores left join maintenance.reportes mr on mo.id_ordenes = mr.id_ordenes where mr.id_reportes is null AND wt.id_trabajadores = ? order by mo.inicio_ordenes asc;",
+      {
+        replacements: [req.params.id],
+      }
+    );
+    res.json(rs[0]);
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
+
+export const getOneForReport = async (req, res) => {
+  try {
+    const rs = await db.query(
+      "SELECT mo.id_ordenes, mo.estado as estado_ordenes, mao.estado as estado_act_ord, mao.descripcion, mao.info, ma.id_actividades, ma.titulo, ma.duracion, ma.prioridad, ma.tipo, ma.variables from maintenance.ordenes mo inner join maintenance.act_ord mao on mo.id_ordenes = mao.id_ordenes inner join maintenance.actividades ma on mao.id_actividades = ma.id_actividades where mo.id_ordenes = ?;",
+      {
+        replacements: [req.params.id],
+      }
+    );
+    res.json(rs[0]);
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
+
 export const getOne = async (req, res) => {
   try {
     const id_ordenes = req.params.id;
