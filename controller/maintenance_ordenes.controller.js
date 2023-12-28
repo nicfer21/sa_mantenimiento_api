@@ -31,7 +31,7 @@ export const getAllList = async (req, res) => {
 export const getAllCombobox = async (req, res) => {
   try {
     const rs = await db.query(
-      "SELECT mo.id_ordenes as value,concat('Orden de Mantenimiento nro ',mo.id_ordenes,' - ',mo.inicio_ordenes at time zone'America/Lima') as label from maintenance.ordenes mo inner join worker.trabajadores wt on mo.id_trabajadores = wt.id_trabajadores left join maintenance.reportes mr on mo.id_ordenes = mr.id_ordenes where mr.id_reportes is null AND wt.id_trabajadores = ? order by mo.inicio_ordenes asc;",
+      "SELECT mo.id_ordenes as value, concat('Orden de Mantenimiento nro ', mo.id_ordenes,' - ', mo.inicio_ordenes at time zone'America/Lima') as label from maintenance.ordenes mo inner join worker.trabajadores wt on mo.id_trabajadores = wt.id_trabajadores left join maintenance.reportes mr on mo.id_ordenes = mr.id_ordenes where mr.id_reportes is null AND wt.id_trabajadores = ? AND date(mo.inicio_ordenes at time zone'America/Lima') =( SELECT date(now() at time zone'America/Lima') ) order by mo.inicio_ordenes asc;",
       {
         replacements: [req.params.id],
       }

@@ -29,6 +29,7 @@ import Maintenance_Sol_Ord from "./routes/maintenance_sol_ord.routes.js";
 import Maintenance_Reportes from "./routes/maintenance_reportes.routes.js";
 
 import Calendario from "./routes/calendario.routes.js";
+import Dashboard from "./routes/dashboard.routes.js";
 
 const app = express();
 const port = PORT;
@@ -90,6 +91,7 @@ app.use("/m_sol_ord/", Maintenance_Sol_Ord);
 app.use("/m_reportes/", Maintenance_Reportes);
 
 app.use("/calendario/", Calendario);
+app.use("/dashboard/", Dashboard);
 
 // para acceder a las imagenes
 app.use("/img/", express.static(join(CURRENT_DIR, "./uploads")));
