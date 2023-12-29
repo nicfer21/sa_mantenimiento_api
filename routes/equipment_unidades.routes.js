@@ -3,6 +3,7 @@ import express from "express";
 import {
   getAll,
   getCombobox,
+  getDiagram,
   getOneCode,
   getOneData,
   getView_Sis_Unid_Ubic,
@@ -16,5 +17,6 @@ router.get("/combobox/", getCombobox);
 
 router.get("/:id", getOneData);
 router.get("/code/:id", getOneCode);
+router.get("/diagram/:id", getDiagram);
 
 export default router;
