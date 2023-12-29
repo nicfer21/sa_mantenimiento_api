@@ -80,13 +80,27 @@ export const getDiagram = async (req, res) => {
         label: rs[0].sistemas_codigo + " / " + rs[0].sistemas_nombre,
       },
       position: { x: posSistemas, y: 0 },
+      style: {
+        background: "#00aaff",
+        color: "#333",
+        border: "1px solid #222138",
+        fontSize: "14px",
+        fontWeight: "bold",
+      },
     };
     nodes[1] = {
       id: "2",
       data: {
         label: rs[0].unidades_codigo_c + " / " + rs[0].unidades_nombre,
       },
-      position: { x: posSistemas, y: 150 },
+      position: { x: posSistemas, y: 100 },
+      style: {
+        background: "#b489ac",
+        color: "#333",
+        border: "1px solid #222138",
+        fontSize: "12px",
+        fontWeight: "bold",
+      },
     };
 
     rs.map((rows, iter) => {
@@ -99,7 +113,7 @@ export const getDiagram = async (req, res) => {
         data: {
           label: rows.partes_codigo_c + " / " + rows.partes_nombre,
         },
-        position: { x: posX, y: 300 },
+        position: { x: posX, y: 250 },
       };
 
       rs2.map((sub, iterSub) => {
@@ -111,7 +125,7 @@ export const getDiagram = async (req, res) => {
             data: {
               label: sub.cantidad,
             },
-            position: { x: posX, y: 450 },
+            position: { x: posX, y: 350 },
             style: {
               background: "#ff7b5a",
               color: "#333",
