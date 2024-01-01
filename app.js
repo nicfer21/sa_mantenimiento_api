@@ -71,7 +71,7 @@ app.get("/prueba/", (req, res) => [
     messege: "Token valido",
     type: true,
   }),
-]);
+  ]);
 
 app.use("/m_trabajadores/", M_TrabajadoresRoutes);
 app.use("/c_usuarios/", C_UsuariosRoutes);
