@@ -47,7 +47,7 @@ export const getAllCombobox = async (req, res) => {
 export const getOneForReport = async (req, res) => {
   try {
     const rs = await db.query(
-      "SELECT mo.id_ordenes, mo.estado as estado_ordenes, mao.estado as estado_act_ord, mao.descripcion, mao.info, ma.id_actividades, ma.titulo, ma.duracion, ma.prioridad, ma.tipo, ma.variables from maintenance.ordenes mo inner join maintenance.act_ord mao on mo.id_ordenes = mao.id_ordenes inner join maintenance.actividades ma on mao.id_actividades = ma.id_actividades where mo.id_ordenes = ?;",
+      "SELECT mo.id_ordenes, mo.estado as estado_ordenes, mao.estado as estado_act_ord, mao.descripcion, mao.info, ma.id_actividades, ma.duracion, ma.prioridad, ma.tipo, ma.variables, concat(ma.titulo,' : ',vs.unidades_nombre,'-',vs.partes_nombre,' ',vs.codigo_c) as titulo from maintenance.ordenes mo inner join maintenance.act_ord mao on mo.id_ordenes = mao.id_ordenes inner join maintenance.actividades ma on mao.id_actividades = ma.id_actividades inner join view_sis_unid_part vs on ma.id_partes = vs.id_partes where mo.id_ordenes = ?;",
       {
         replacements: [req.params.id],
       }
