@@ -44,6 +44,7 @@ export const getAllCombobox = async (req, res) => {
   }
 };
 
+
 export const getOneForReport = async (req, res) => {
   try {
     const rs = await db.query(
